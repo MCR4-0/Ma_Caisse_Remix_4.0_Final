@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="flex flex-col items-center justify-center py-12">
+    <div class="text-center mb-10">
+        <h1 class="text-4xl font-bold text-primary-700 mb-4">Ma Caisse Remix 4.0</h1>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+            Bienvenue dans MCR4.0 ! Gérez vos comptes clients avec une simplicité révolutionnaire, effectuez des transactions en un clin d'œil et gardez le contrôle total de vos finances. Votre succès commence ici !
+        </p>
+    </div>
+    
+    <div class="bg-white shadow-lg rounded-lg overflow-hidden w-full max-w-lg">
+        <div class="bg-primary-700 text-white px-6 py-4">
+            <h2 class="text-xl font-semibold">Connexion au système</h2>
+        </div>
+        <div class="p-6">
+            <p class="mb-6 text-gray-600">
+                Veuillez vous connecter pour accéder au système. Si vous n'avez pas de compte, contactez votre administrateur.
+            </p>
+            <a href="{{ url_for('auth.login') }}" class="block w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-4 rounded text-center transition-colors">
+                Se connecter
+            </a>
+        </div>
+    </div>
+    
+    <div class="mt-12 grid md:grid-cols-3 gap-8 w-full max-w-5xl">
+        <!-- Fonctionnalités Administrateur -->
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+            <div class="p-6">
+                <div class="w-12 h-12 bg-blue-100 text-blue-500 rounded-full flex items-center justify-center mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Administrateur</h3>
+                <p class="text-gray-600">
+                    Créez et gérez les superviseurs dans le système. Maintenez un contrôle total sur la plateforme.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Fonctionnalités Superviseur -->
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+            <div class="p-6">
+                <div class="w-12 h-12 bg-green-100 text-green-500 rounded-full flex items-center justify-center mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Superviseur</h3>
+                <p class="text-gray-600">
+                    Créez et gérez les dealers. Supervisez leurs activités et la gestion des clients.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Fonctionnalités Dealer -->
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+            <div class="p-6">
+                <div class="w-12 h-12 bg-purple-100 text-purple-500 rounded-full flex items-center justify-center mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Dealer</h3>
+                <p class="text-gray-600">
+                    Gérez les comptes clients, effectuez des dépôts et retraits, et consultez l'historique des transactions.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
