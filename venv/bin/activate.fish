@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV '/home/keren/Téléchargements/project-bolt-sb1-z64c8n6h (1)/project/venv'
+set -gx VIRTUAL_ENV /home/keren/Ma_Caisse_Remix_4.0_Final/venv
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"bin $PATH

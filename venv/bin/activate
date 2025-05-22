@@ -39,10 +39,10 @@ deactivate nondestructive
 if [ "${OSTYPE:-}" = "cygwin" ] || [ "${OSTYPE:-}" = "msys" ] ; then
     # transform D:\path\to\venv to /d/path/to/venv on MSYS
     # and to /cygdrive/d/path/to/venv on Cygwin
-    export VIRTUAL_ENV=$(cygpath '/home/keren/Téléchargements/project-bolt-sb1-z64c8n6h (1)/project/venv')
+    export VIRTUAL_ENV=$(cygpath /home/keren/Ma_Caisse_Remix_4.0_Final/venv)
 else
     # use the path as-is
-    export VIRTUAL_ENV='/home/keren/Téléchargements/project-bolt-sb1-z64c8n6h (1)/project/venv'
+    export VIRTUAL_ENV=/home/keren/Ma_Caisse_Remix_4.0_Final/venv
 fi
 
 _OLD_VIRTUAL_PATH="$PATH"

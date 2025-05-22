@@ -1,6 +1,4 @@
-#!/bin/sh
-'''exec' "/home/keren/Téléchargements/project-bolt-sb1-z64c8n6h (1)/project/venv/bin/python3" "$0" "$@"
-' '''
+#!/home/keren/Ma_Caisse_Remix_4.0_Final/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
