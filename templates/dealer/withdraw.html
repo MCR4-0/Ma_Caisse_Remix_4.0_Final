@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="mb-8">
+    <h1 class="text-2xl font-bold text-gray-800">Retrait pour {{ client.full_name }}</h1>
+    <p class="text-gray-600">Effectuer un retrait sur le compte du client</p>
+</div>
+
+<!-- Client Information -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+    <div class="px-6 py-4 border-b">
+        <h2 class="text-lg font-semibold text-gray-700">Informations du client</h2>
+    </div>
+    <div class="p-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <p class="text-sm font-medium text-gray-500">Nom complet</p>
+                <p class="text-lg font-semibold text-gray-900">{{ client.full_name }}</p>
+            </div>
+            <div>
+                <p class="text-sm font-medium text-gray-500">Code</p>
+                <p class="text-lg font-semibold text-gray-900">{{ client.code }}</p>
+            </div>
+            <div>
+                <p class="text-sm font-medium text-gray-500">Numéro de compte</p>
+                <p class="text-lg font-semibold text-gray-900">{{ client.account_number }}</p>
+            </div>
+            <div>
+                <p class="text-sm font-medium text-gray-500">Solde actuel</p>
+                <p class="text-lg font-semibold text-gray-900">{{ client.balance }}fc</p>
+            </div>
+            <div>
+                <p class="text-sm font-medium text-gray-500">Solde retirable</p>
+                <p class="text-lg font-semibold text-gray-900">{{ withdrawable_balance }}fc</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Withdrawal Form -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+    <div class="px-6 py-4 border-b">
+        <h2 class="text-lg font-semibold text-gray-700">Formulaire de retrait</h2>
+    </div>
+    <div class="p-6">
+        <form method="POST" action="{{ url_for('dealer.withdraw', client_id=client.id) }}">
+            {{ form.hidden_tag() }}
+            
+            <div class="mb-6">
+                <label for="amount" class="block text-gray-700 font-medium mb-2">{{ form.amount.label }}</label>
+                {{ form.amount(class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500", id="amount") }}
+                {% if form.amount.errors %}
+                    <div class="text-red-500 text-sm mt-1">
+                        {% for error in form.amount.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <p class="text-sm text-gray-500 mt-1">Montant maximum retirable : {{ withdrawable_balance }}fc</p>
+            </div>
+            
+            <div class="mb-6">
+                <label for="description" class="block text-gray-700 font-medium mb-2">{{ form.description.label }}</label>
+                {{ form.description(class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500", id="description") }}
+                {% if form.description.errors %}
+                    <div class="text-red-500 text-sm mt-1">
+                        {% for error in form.description.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="flex justify-between items-center mt-8">
+                <a href="{{ url_for('dealer.view_client', client_id=client.id) }}" class="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+                    Annuler
+                </a>
+                {{ form.submit(class="px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors") }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

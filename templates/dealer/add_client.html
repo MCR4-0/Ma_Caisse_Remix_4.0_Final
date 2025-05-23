@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="mb-8">
+    <h1 class="text-2xl font-bold text-gray-800">Ajouter un nouveau client</h1>
+    <p class="text-gray-600">Créer un nouveau compte client ordinaire</p>
+</div>
+
+<div class="bg-white rounded-lg shadow-md overflow-hidden">
+    <div class="px-6 py-4 border-b">
+        <h2 class="text-lg font-semibold text-gray-700">Informations du client</h2>
+    </div>
+    
+    <div class="p-6">
+        <form method="POST" action="{{ url_for('dealer.add_client') }}">
+            {{ form.hidden_tag() }}
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <label for="{{ form.first_name.id }}" class="block text-gray-700 font-medium mb-2">{{ form.first_name.label }}</label>
+                    {{ form.first_name(class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500", placeholder="Entrez le prénom") }}
+                    {% for error in form.first_name.errors %}
+                        <div class="text-red-500 text-sm mt-1">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                
+                <div>
+                    <label for="{{ form.last_name.id }}" class="block text-gray-700 font-medium mb-2">{{ form.last_name.label }}</label>
+                    {{ form.last_name(class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500", placeholder="Entrez le nom") }}
+                    {% for error in form.last_name.errors %}
+                        <div class="text-red-500 text-sm mt-1">{{ error }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <label for="{{ form.post_nom.id }}" class="block text-gray-700 font-medium mb-2">{{ form.post_nom.label }}</label>
+                    {{ form.post_nom(class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500", placeholder="Entrez le post-nom (facultatif)") }}
+                    {% for error in form.post_nom.errors %}
+                        <div class="text-red-500 text-sm mt-1">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                
+                <div>
+                    <label for="{{ form.gender.id }}" class="block text-gray-700 font-medium mb-2">{{ form.gender.label }}</label>
+                    {{ form.gender(class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500") }}
+                    {% for error in form.gender.errors %}
+                        <div class="text-red-500 text-sm mt-1">{{ error }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <label for="{{ form.marital_status.id }}" class="block text-gray-700 font-medium mb-2">{{ form.marital_status.label }}</label>
+                    {{ form.marital_status(class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500") }}
+                    {% for error in form.marital_status.errors %}
+                        <div class="text-red-500 text-sm mt-1">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                
+                <div>
+                    <label for="{{ form.email.id }}" class="block text-gray-700 font-medium mb-2">{{ form.email.label }}</label>
+                    {{ form.email(class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500", placeholder="Entrez l'email (facultatif)") }}
+                    {% for error in form.email.errors %}
+                        <div class="text-red-500 text-sm mt-1">{{ error }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <label for="{{ form.phone_number.id }}" class="block text-gray-700 font-medium mb-2">{{ form.phone_number.label }}</label>
+                    {{ form.phone_number(class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500", placeholder="Entrez le numéro de téléphone (facultatif)") }}
+                    {% for error in form.phone_number.errors %}
+                        <div class="text-red-500 text-sm mt-1">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                
+                <div>
+                    <label for="{{ form.commune.id }}" class="block text-gray-700 font-medium mb-2">{{ form.commune.label }}</label>
+                    {{ form.commune(class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500") }}
+                    {% for error in form.commune.errors %}
+                        <div class="text-red-500 text-sm mt-1">{{ error }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <label for="{{ form.city.id }}" class="block text-gray-700 font-medium mb-2">{{ form.city.label }}</label>
+                    {{ form.city(class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500", placeholder="Entrez la ville (facultatif)") }}
+                    {% for error in form.city.errors %}
+                        <div class="text-red-500 text-sm mt-1">{{ error }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="flex justify-between items-center mt-8">
+                <a href="{{ url_for('dealer.dashboard') }}" class="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+                    Annuler
+                </a>
+                {{ form.submit(class="px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors") }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
